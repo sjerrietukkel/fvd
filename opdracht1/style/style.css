@@ -1,17 +1,35 @@
-p {
-    background-color: black; 
-    color: white;
-    padding: 10px;
+* {
+    font-family: 'Open Sans', sans-serif;
 }
 
+body {
+    background-color: #181818;
+}
+
+
 #draggable:hover {
-    background-color: hotpink;
+    background-color: gray;
+    opacity: 30%;
+    cursor:move;
 }
 
 .dropzone {
     width: 200px;
     height: 20px;
-    background: blueviolet;
-    margin-bottom: 10px;
+    background: none;
+    margin-bottom: 0px;
     padding: 10px;
+    border-top: 1px gray solid;
+
+  }
+
+  .dropzone:last-of-type {
+    border-bottom: 1px gray solid;
+  }
+
+
+
+  div {
+      /* color: #6AE368; */
+      color: white;
   }

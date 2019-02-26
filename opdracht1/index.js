@@ -1,4 +1,6 @@
-var dragged;
+var btn = document.getElementById("btn")
+var alles = document.getElementById("alles")
+var dragged
 
 /* events fired on the draggable target */
 document.addEventListener("drag", function( event ) {
@@ -21,12 +23,13 @@ document.addEventListener("dragend", function( event ) {
 document.addEventListener("dragover", function( event ) {
     // prevent default to allow drop
     event.preventDefault();
+
 }, false);
 
 document.addEventListener("dragenter", function( event ) {
     // highlight potential drop target when the draggable element enters it
     if ( event.target.className == "dropzone" ) {
-        event.target.style.background = "purple";
+        event.target.style.background = "#6AE368";
     }
 
 }, false);
@@ -45,8 +48,32 @@ document.addEventListener("drop", function( event ) {
     // move dragged elem to the selected drop target
     if ( event.target.className == "dropzone" ) {
         event.target.style.background = "";
-        dragged.parentNode.removeChild( dragged );
-        event.target.appendChild( dragged );
-    }
-  
+        // dragged.parentNode.removeChild( dragged );  
+        // event.target.appendChild( dragged );
+
+        var tgt = event.currentTarget.children;
+
+        event.currentTarget.replaceChild(dragged, tgt);
+        dragged.appendChild(tgt);
+
+        console.log(event.currentTarget)
+
+        // event.target.replaceChild(dragged, event)
+        // console.log(dragged)
+    }  
 }, false);
+
+btn.addEventListener("click", addSong);
+
+
+
+function addSong(){
+	if(input.value === "") {
+		alert("Je moet wel iets invullen, knecht!");
+	} 
+	else { 
+		var text = input.value;
+        var item = `<div class="dropzone"><div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">${text}</div>`
+		alles.insertAdjacentHTML('beforeend', item);
+	}
+}
